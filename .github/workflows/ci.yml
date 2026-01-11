@@ -34,7 +34,7 @@ jobs:
     # B4: Cai cac browser co san cua playwright
     # with-deps: cai dat cac thu vien phu thuoc browser
       - name: Install playwight browsers
-        run: npx playwright Install --with-deps
+        run: npx playwright install --with-deps
 
     # B5: chay test
       - name: Run playwright test
