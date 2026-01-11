@@ -1,0 +1,41 @@
+name: CI - chay test
+
+#dieu kien de chay pipeline
+#don gian: trigger chay test khi push code len github
+#tao pull request -> trigger pipepline
+#merge pull request -> trigger pipeline
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  test: # define step test
+  # chon moi truong de chay test
+  # ubuntu-latest: moi truong linux
+  # windows-latest: moi truong windows
+  # macos-latest: moi truong macos
+    runs-on: ubuntu-latest
+    steps:
+    # B1: clone source code tu github
+      - name: checkout code
+        uses: actions/checkout@v4
+    
+    # B2: thiet lap moi truong nodejs
+      - name: Setup Node.js
+        uses: actions/stepup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' #cache nay giup tang toc do build playwright
+    
+    # B3: cai dat cac thu vien co trong sourse code playwight
+      - name: Install dependencies
+        run: npm Install
+
+    # B4: Cai cac browser co san cua playwright
+    # with-deps: cai dat cac thu vien phu thuoc browser
+      - name: Install playwight browsers
+        run: npx playwight Install --with-deps
+
+    # B5: chay test
+      - name: Run playwight test
+        run: npx playwight test
