@@ -29,7 +29,7 @@ jobs:
     
     # B3: cai dat cac thu vien co trong sourse code playwight
       - name: Install dependencies
-        run: npm Install
+        run: npm install
 
     # B4: Cai cac browser co san cua playwright
     # with-deps: cai dat cac thu vien phu thuoc browser
