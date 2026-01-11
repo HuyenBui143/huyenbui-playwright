@@ -22,7 +22,7 @@ jobs:
     
     # B2: thiet lap moi truong nodejs
       - name: Setup Node.js
-        uses: actions/stetup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm' #cache nay giup tang toc do build playwright
